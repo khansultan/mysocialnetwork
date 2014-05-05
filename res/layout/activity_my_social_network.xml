@@ -1,0 +1,129 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MySocialNetwork"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- Login to facebook -->
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            android:text="Login" />
+
+        <!-- Logout to facebook -->
+
+        <Button
+            android:id="@+id/button_logout"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            android:text="Logout" />
+
+        <!-- Status of login/logout -->
+
+        <TextView
+            android:id="@+id/text_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button_login"
+            android:layout_centerHorizontal="true"
+            android:text="" />
+        
+        <Button
+            android:id="@+id/button_get_friend_data"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_login"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="Fetch Network Data" />
+        
+        <Button
+            android:id="@+id/personal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_get_friend_data"
+            android:layout_margin="25dp"
+            android:background="@drawable/personal_info" 
+            android:onClick="showPersonalInfo"/>
+        
+         <Button
+            android:id="@+id/button_get_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/personal"
+            android:layout_alignBaseline="@id/personal"
+            android:layout_margin="25dp"
+            android:background="@drawable/home" 
+            android:onClick="showHomeTown"/>
+         
+          <Button
+            android:id="@+id/sunsign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/button_get_home"
+            android:layout_alignBaseline="@id/button_get_home"
+            android:layout_margin="25dp"
+            android:background="@drawable/sunsign" 
+            android:onClick="showSunSigns"/>
+          
+           <Button
+            android:id="@+id/education"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/personal"
+            android:layout_margin="25dp"
+            android:background="@drawable/education" 
+            android:onClick="showEducation"/>
+           
+           
+           <Button
+            android:id="@+id/work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/education"
+            android:layout_alignBaseline="@id/education"
+            android:layout_margin="25dp"
+            android:background="@drawable/work" 
+            android:onClick="showWork"/>
+
+           
+           <Button
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/work"
+            android:layout_alignBaseline="@id/education"
+            android:layout_margin="25dp"
+            android:background="@drawable/more" 
+            android:onClick="showPolitics"/>
+           
+           <TextView
+            android:id="@+id/display_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/education"
+            android:paddingTop="15dp"
+            android:layout_margin="5dp"
+            android:text="@string/displaytext"/>
+         
+     </RelativeLayout>
+
+</ScrollView>

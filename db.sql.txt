@@ -1,0 +1,411 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.11.3
+-- http://www.phpmyadmin.net
+--
+-- Host: 203.124.112.128
+-- Generation Time: Mar 17, 2014 at 10:03 PM
+-- Server version: 5.0.96
+-- PHP Version: 5.1.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: 'khansultan'
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fav_athletes'
+--
+
+DROP TABLE IF EXISTS fav_athletes;
+CREATE TABLE IF NOT EXISTS fav_athletes (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  athlete_id varchar(45) NOT NULL,
+  athlete_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,athlete_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fav_ins_people'
+--
+
+DROP TABLE IF EXISTS fav_ins_people;
+CREATE TABLE IF NOT EXISTS fav_ins_people (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  people_id varchar(45) NOT NULL,
+  people_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,people_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_books'
+--
+
+DROP TABLE IF EXISTS fb_books;
+CREATE TABLE IF NOT EXISTS fb_books (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  book_id varchar(45) NOT NULL,
+  book_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,book_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_checkins'
+--
+
+DROP TABLE IF EXISTS fb_checkins;
+CREATE TABLE IF NOT EXISTS fb_checkins (
+  checkin_id varchar(45) NOT NULL,
+  checkin_place varchar(200) default NULL,
+  checkin_time datetime NOT NULL,
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  PRIMARY KEY  (checkin_time,checkin_id),
+  KEY fk_fb_checkins_fb_user_data1_idx (fb_user_data_fb_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_devices'
+--
+
+DROP TABLE IF EXISTS fb_devices;
+CREATE TABLE IF NOT EXISTS fb_devices (
+  device_os varchar(45) default NULL,
+  device_hardware varchar(200) default NULL,
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  KEY fk_fb_devices_fb_user_data1_idx (fb_user_data_fb_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_education'
+--
+
+DROP TABLE IF EXISTS fb_education;
+CREATE TABLE IF NOT EXISTS fb_education (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  school_id varchar(45) NOT NULL,
+  school_name varchar(200) default NULL,
+  school_type varchar(200) default NULL,
+  school_year varchar(45) default NULL,
+  course_id varchar(45) default NULL,
+  course_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,school_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_fav_teams'
+--
+
+DROP TABLE IF EXISTS fb_fav_teams;
+CREATE TABLE IF NOT EXISTS fb_fav_teams (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  team_id varchar(45) NOT NULL,
+  team_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,team_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_friend_list'
+--
+
+DROP TABLE IF EXISTS fb_friend_list;
+CREATE TABLE IF NOT EXISTS fb_friend_list (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  friend_id varchar(45) NOT NULL,
+  friend_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,friend_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_interest'
+--
+
+DROP TABLE IF EXISTS fb_interest;
+CREATE TABLE IF NOT EXISTS fb_interest (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  interest_id varchar(45) NOT NULL,
+  interest_category varchar(45) default NULL,
+  interest_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,interest_id),
+  KEY fk_fb_interest_fb_user_data1_idx (fb_user_data_fb_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_languages'
+--
+
+DROP TABLE IF EXISTS fb_languages;
+CREATE TABLE IF NOT EXISTS fb_languages (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  language_id varchar(45) NOT NULL,
+  language_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,language_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_likes'
+--
+
+DROP TABLE IF EXISTS fb_likes;
+CREATE TABLE IF NOT EXISTS fb_likes (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  like_id varchar(45) NOT NULL,
+  like_name varchar(200) default NULL,
+  like_category varchar(45) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,like_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_movies'
+--
+
+DROP TABLE IF EXISTS fb_movies;
+CREATE TABLE IF NOT EXISTS fb_movies (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  movie_id varchar(45) NOT NULL,
+  movie_name varchar(200) default NULL,
+  movie_category varchar(45) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,movie_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_music'
+--
+
+DROP TABLE IF EXISTS fb_music;
+CREATE TABLE IF NOT EXISTS fb_music (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  music_id varchar(45) NOT NULL,
+  music_name varchar(200) default NULL,
+  music_category varchar(45) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,music_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_sports'
+--
+
+DROP TABLE IF EXISTS fb_sports;
+CREATE TABLE IF NOT EXISTS fb_sports (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  sports_id varchar(45) NOT NULL,
+  sports_name varchar(200) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,sports_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_television'
+--
+
+DROP TABLE IF EXISTS fb_television;
+CREATE TABLE IF NOT EXISTS fb_television (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  tv_id varchar(45) NOT NULL,
+  tv_name varchar(200) default NULL,
+  tv_category varchar(45) default NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,tv_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_user_data'
+--
+
+DROP TABLE IF EXISTS fb_user_data;
+CREATE TABLE IF NOT EXISTS fb_user_data (
+  fb_id varchar(25) NOT NULL,
+  fb_name varchar(45) default NULL,
+  fb_first_name varchar(45) default NULL,
+  fb_middle_name varchar(45) default NULL,
+  fb_last_name varchar(45) default NULL,
+  fb_link varchar(200) default NULL,
+  fb_username varchar(45) default NULL,
+  fb_hometown_id varchar(45) default NULL,
+  fb_hometown_name varchar(200) default NULL,
+  fb_location_id varchar(45) default NULL,
+  fb_location_name varchar(200) default NULL,
+  fb_bio longtext,
+  fb_quotes longtext,
+  fb_gender varchar(45) default NULL,
+  fb_religion varchar(45) default NULL,
+  fb_email varchar(100) default NULL,
+  fb_timezone varchar(45) default NULL,
+  fb_bday date default NULL,
+  fb_relationship_status varchar(45) default NULL,
+  fb_bday_date varchar(2) default NULL,
+  fb_bday_month varchar(2) default NULL,
+  fb_bday_year varchar(4) default NULL,
+  date_added timestamp NULL default NULL,
+  PRIMARY KEY  (fb_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_video_games'
+--
+
+DROP TABLE IF EXISTS fb_video_games;
+CREATE TABLE IF NOT EXISTS fb_video_games (
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  game_id varchar(45) NOT NULL,
+  game_name varchar(200) default NULL,
+  game_category varchar(45) default NULL,
+  KEY fk_fb_video_games_fb_user_data1_idx (fb_user_data_fb_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'fb_work'
+--
+
+DROP TABLE IF EXISTS fb_work;
+CREATE TABLE IF NOT EXISTS fb_work (
+  employer_id varchar(45) NOT NULL,
+  employer_name varchar(200) default NULL,
+  employer_location_id varchar(45) default NULL,
+  employer_location_name varchar(200) default NULL,
+  employer_position_id varchar(45) default NULL,
+  employer_position_name varchar(200) default NULL,
+  employer_start_date date default NULL,
+  employer_end_date date default NULL,
+  fb_user_data_fb_id varchar(25) NOT NULL,
+  PRIMARY KEY  (fb_user_data_fb_id,employer_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `fav_athletes`
+--
+ALTER TABLE `fav_athletes`
+  ADD CONSTRAINT fk_fav_athletes_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fav_ins_people`
+--
+ALTER TABLE `fav_ins_people`
+  ADD CONSTRAINT fk_fav_ins_people_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_books`
+--
+ALTER TABLE `fb_books`
+  ADD CONSTRAINT fk_fb_books_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_checkins`
+--
+ALTER TABLE `fb_checkins`
+  ADD CONSTRAINT fk_fb_checkins_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_devices`
+--
+ALTER TABLE `fb_devices`
+  ADD CONSTRAINT fk_fb_devices_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_education`
+--
+ALTER TABLE `fb_education`
+  ADD CONSTRAINT fk_fb_education_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_fav_teams`
+--
+ALTER TABLE `fb_fav_teams`
+  ADD CONSTRAINT fk_fb_fav_teams_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_friend_list`
+--
+ALTER TABLE `fb_friend_list`
+  ADD CONSTRAINT fk_fb_friend_list_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_interest`
+--
+ALTER TABLE `fb_interest`
+  ADD CONSTRAINT fk_fb_interest_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_languages`
+--
+ALTER TABLE `fb_languages`
+  ADD CONSTRAINT fk_fb_languages_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_likes`
+--
+ALTER TABLE `fb_likes`
+  ADD CONSTRAINT fk_fb_likes_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_movies`
+--
+ALTER TABLE `fb_movies`
+  ADD CONSTRAINT fk_fb_likes_fb_user_data10 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_music`
+--
+ALTER TABLE `fb_music`
+  ADD CONSTRAINT fk_fb_likes_fb_user_data100 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_sports`
+--
+ALTER TABLE `fb_sports`
+  ADD CONSTRAINT fk_fb_sports_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_television`
+--
+ALTER TABLE `fb_television`
+  ADD CONSTRAINT fk_fb_likes_fb_user_data101 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_video_games`
+--
+ALTER TABLE `fb_video_games`
+  ADD CONSTRAINT fk_fb_video_games_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fb_work`
+--
+ALTER TABLE `fb_work`
+  ADD CONSTRAINT fk_fb_work_fb_user_data1 FOREIGN KEY (fb_user_data_fb_id) REFERENCES fb_user_data (fb_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
